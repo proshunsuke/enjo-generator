@@ -1,12 +1,35 @@
 {
-  "name": "application-name",
+  "name": "sekimiya-enjo-generator",
+  "description": "関宮君の炎上ジェネレーター",
   "version": "0.0.1",
+  "homepage": "https://sekimiya-enjo-generator.herokuapp.com",
+  "author": {
+    "name": "pro_shunsuke",
+    "email": "shunsuke0901@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:proshunsuke/enjo-generator.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "app.js",
+  "engines": {
+    "node": ">= 0.10.33"
+  },
+  "keywords": [
+     "enjo", "generator"
+  ],
   "private": true,
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
     "express": "3.1.0",
-    "jade": "*"
+    "jade": "1.7.0",
+    "vue": "0.10.6"
   }
 }
