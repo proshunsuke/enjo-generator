@@ -1,2 +1,87 @@
 <% extend 'layout' %>
-<h1><%= @title %></h1>
+<link rel="stylesheet" href="/css/enjo.css">
+<div class="container">
+    <h1>
+        炎上ジェネレーター
+    </h1>
+    <div class="grid">
+        <div class="row">
+            <div class="span6">
+                <img class="rounded polaroid" src="/imgs/enjo.jpeg">
+            </div>
+            <div class="span5">
+                <div class="grid">
+                    <div class="row">
+                        <div class="span5 bg-green text-center padding10">
+                            <h2 class="fg-white">
+                                セリフ
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span5 bg-amber text-center padding10">
+                            <form>
+                                <div class="forms">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input type="text" placeholder="今日のゼミは絶対炎上しないよ！">
+                                        </input>
+                                    </div>
+                                    <div class="input-control text" data-role="input-control">
+                                        <input type="text" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
+                                        </input>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tile bg-darkPink span2">
+                            <div class="tile-content icon">
+                                <i class="icon-remove"></i>
+                            </div>
+                            <div class="tile-status">
+                        <span class="name">
+                            全消し
+                        </span>
+                            </div>
+                        </div>
+                        <div class="tile bg-darkPink span2">
+                            <div class="tile-content icon">
+                                <i class="icon-star-3"></i>
+                            </div>
+                            <div class="tile-status">
+                        <span class="name">
+                            オリジナル
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="tile bg-darkPink span2">
+                            <div class="tile-content icon">
+                                <i class="icon-download-2"></i>
+                            </div>
+                            <div class="tile-status">
+                        <span class="name">
+                            保存
+                        </span>
+                            </div>
+                        </div>
+                        <div class="tile bg-darkPink span2">
+                            <div class="tile-content icon">
+                                <i class="icon-twitter"></i>
+                            </div>
+                            <div class="tile-status">
+                        <span class="name">
+                            twitter連携
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
