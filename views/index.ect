@@ -23,11 +23,11 @@
                             <form>
                                 <div class="forms">
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" v-model="enjoMesg1" placeholder="今日のゼミは絶対炎上しないよ！">
+                                        <input type="text" v-model="enjoMsg1" v-on="keyup: inputMsg()" placeholder="今日のゼミは絶対炎上しないよ！">
                                         </input>
                                     </div>
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" v-model="enjoMesg2" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
+                                        <input type="text" v-model="enjoMsg2" v-on="keyup: inputMsg()" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
                                         </input>
                                     </div>
                                 </div>
@@ -35,8 +35,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="tile bg-darkPink span2">
-                            <div class="tile-content icon">
+                        <div class="tile bg-darkBlue span2">
+                            <div class="tile-content icon" v-on="click: allDelete()">
                                 <i class="icon-remove"></i>
                             </div>
                             <div class="tile-status">
@@ -45,8 +45,8 @@
                         </span>
                             </div>
                         </div>
-                        <div class="tile bg-darkPink span2">
-                            <div class="tile-content icon">
+                        <div class="tile bg-darkOrange span2">
+                            <div class="tile-content icon" v-on="click: inputOrigin()">
                                 <i class="icon-star-3"></i>
                             </div>
                             <div class="tile-status">
@@ -57,8 +57,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="tile bg-darkPink span2">
-                            <div class="tile-content icon">
+                        <div class="tile bg-darkGreen span2">
+                            <div class="tile-content icon" v-on="click: save()">
                                 <i class="icon-download-2"></i>
                             </div>
                             <div class="tile-status">
@@ -67,7 +67,7 @@
                         </span>
                             </div>
                         </div>
-                        <div class="tile bg-darkPink span2">
+                        <div class="tile bg-lightBlue span2">
                             <div class="tile-content icon">
                                 <i class="icon-twitter"></i>
                             </div>
