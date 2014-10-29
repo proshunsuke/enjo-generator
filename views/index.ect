@@ -1,13 +1,13 @@
 <% extend 'layout' %>
-<link rel="stylesheet" href="/css/enjo.css">
-<div class="container">
+<div class="container" id="main">
     <h1>
         炎上ジェネレーター
     </h1>
     <div class="grid">
         <div class="row">
             <div class="span6">
-                <img class="rounded polaroid" src="/imgs/enjo.jpeg">
+                <canvas id="enjo-area" height="595px" width="400px"></canvas>
+                <!--<img class="rounded polaroid" src="/imgs/enjo.jpeg">-->
             </div>
             <div class="span5">
                 <div class="grid">
@@ -23,11 +23,11 @@
                             <form>
                                 <div class="forms">
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" placeholder="今日のゼミは絶対炎上しないよ！">
+                                        <input type="text" v-model="enjo-mesg1" placeholder="今日のゼミは絶対炎上しないよ！">
                                         </input>
                                     </div>
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
+                                        <input type="text" v-model="enjo-mesg2" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
                                         </input>
                                     </div>
                                 </div>
@@ -85,3 +85,5 @@
         </div>
     </div>
 </div>
+<link rel="stylesheet" href="/css/enjo.css">
+<script src="/js/enjo.js"></script>
