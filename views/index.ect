@@ -1,6 +1,6 @@
 <% extend 'layout' %>
 <div class="container" id="main">
-    <h1>
+    <h1 id="tes">
         炎上ジェネレーター
     </h1>
     <div class="grid">
@@ -23,11 +23,11 @@
                             <form>
                                 <div class="forms">
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" v-model="enjo-mesg1" placeholder="今日のゼミは絶対炎上しないよ！">
+                                        <input type="text" v-model="enjoMesg1" placeholder="今日のゼミは絶対炎上しないよ！">
                                         </input>
                                     </div>
                                     <div class="input-control text" data-role="input-control">
-                                        <input type="text" v-model="enjo-mesg2" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
+                                        <input type="text" v-model="enjoMesg2" placeholder="もし炎上したら木の下に埋めて貰っても構わないよ">
                                         </input>
                                     </div>
                                 </div>
@@ -86,7 +86,5 @@
     </div>
 </div>
 <link rel="stylesheet" href="/css/enjo.css">
-<link rel="stylesheet" href="/lib/taketori_js/taketori.css">
-
 <script src="/js/enjo.js"></script>
-<script src="/lib/taketori_js/taketori.js"></script>
+

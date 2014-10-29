@@ -9,11 +9,13 @@
     window.enjo = new Vue({
         el: '#main',
         data: {
-            mesg: "test"
+            enjoMesg1: "",
+            enjoMesg2: ""
         },
         ready: function(){
             img = new Image();
             img.src = "/imgs/enjo.jpeg";
+            (new Taketori()).set({fontFamily: "serif", height: "auto"}).element("tes").toVertical();
             this.init();
         },
         methods: {
