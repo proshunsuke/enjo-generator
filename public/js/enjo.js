@@ -44,11 +44,11 @@
             },
             inputMsg1: function(){
                 ctx.font = "20px 'YasashisaAntique'";
-                this.tategaki(ctx,this.$data.enjoMsg1,360,43,11);
+                this.tategaki(ctx,this.$data.enjoMsg1,360,43,10);
             },
             inputMsg2: function(){
                 ctx.font = "20px 'YasashisaAntique'";
-                this.tategaki(ctx,this.$data.enjoMsg2,70,43,11);
+                this.tategaki(ctx,this.$data.enjoMsg2,75,43,10);
             },
             inputMsg: function(){
                 this.init();
@@ -61,8 +61,8 @@
                 this.$data.enjoMsg2 = "";
             },
             inputOrigin: function(){
-                this.$data.enjoMsg1 = "今日のゼミは　　　　　絶対炎上しないよ！";
-                this.$data.enjoMsg2 = "もし炎上したら　　　　木の下に埋めて貰っても構わないよ";
+                this.$data.enjoMsg1 = "今日のゼミは　　　　絶対炎上しないよ！";
+                this.$data.enjoMsg2 = "もし炎上したら　　　木の下に埋めて貰っても構わないよ";
                 this.inputMsg();
             },
             // thanks to http://jsdo.it/Yukisuke/p311
@@ -91,6 +91,7 @@
                     var a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
                     a.href = data;
                     a.download = _file;
+                    console.log(a);
                     a.dispatchEvent(e);
                 }
             },
