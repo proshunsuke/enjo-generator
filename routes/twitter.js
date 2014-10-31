@@ -3,6 +3,7 @@
  */
 var Twitter = require('../models/twitter');
 var express = require('express');
+var conf = require('config');
 var twitterAPI = require.main.children[1];
 var router = express.Router();
 
@@ -13,9 +14,29 @@ router.route('/twitter')
                 return res.send(err);
             }
 
-            //res.json(twitter);
-            console.log(twitterAPI.exports.twitterAPI);
-            res.json(twitterAPI.exports.twitterAPI);
+            var twitter = twitterAPI.exports.twitterAPI;
+            twitter.statuses("update", {
+                    status: "Hello world!",
+                    media: [
+                        "path_to_file1",
+                        "path_to_file2",
+                        stream
+                    ]
+                },
+                conf.twitter.accessToken,
+                conf.twitter.accessTokenSecret,
+                function(error, data, response) {
+                    if (error) {
+                        console.log(error);
+                        res.json(error);
+                        // something went wrong
+                    } else {
+                        console.log(response);
+                        res.json(response);
+                        // data contains the data sent by twitter
+                    }
+                }
+            );
         });
     }).post(function(req, res) {
         var twitter = new Twitter(req.body);

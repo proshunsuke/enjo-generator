@@ -86,7 +86,7 @@ require('dns').lookup(require('os').hostname(), function (err, add, fam) {
 
     // twitter api
     module.exports.twitterAPI= new twitterAPI({
-        consumerKey: conf.twitter.consumerSecret,
+        consumerKey: conf.twitter.consumerKey,
         consumerSecret: conf.twitter.consumerSecret,
         callback: 'http://' + addr
     });
