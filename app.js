@@ -4,13 +4,25 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var twitterAPI = require('node-twitter-api');
+var conf = require('config');
 var ECT = require('ect');
 var ectRenderer = ECT({ watch: true, root: __dirname + '/views', ext : '.ect' });
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var apiTwitter = require('./routes/twitter'); //routes are defined here
+
+
 var app = express();
+
+var addr;
+var twitter;
+
+
+
 
 // view engine setup
 app.engine('ect', ectRenderer.render);
@@ -28,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/api', apiTwitter); //This is our route middleware
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,3 +75,20 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+    addr = add;
+    //connect to our database
+//Ideally you will obtain DB details from a config file
+    var dbName = 'twitterDB';
+    var connectionString = 'mongodb://'+addr+':27017/' + dbName;
+    mongoose.connect(connectionString);
+
+    // twitter api
+    module.exports.twitterAPI= new twitterAPI({
+        consumerKey: conf.twitter.consumerSecret,
+        consumerSecret: conf.twitter.consumerSecret,
+        callback: 'http://' + addr
+    });
+
+});
