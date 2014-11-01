@@ -4,7 +4,7 @@
 var Twitter = require('../models/twitter');
 var express = require('express');
 var conf = require('config');
-var twitterAPI = require.main.children[1];
+var appMain = require.main.children[1];
 var router = express.Router();
 
 router.route('/twitter')
@@ -13,25 +13,27 @@ router.route('/twitter')
             if (err) {
                 return res.send(err);
             }
+            //console.log(require.main.children);
 
-            var twitter = twitterAPI.exports.twitterAPI;
-            twitter.statuses("update", {
-                    status: "Hello world!",
+            var twitter = appMain.exports.twitterAPI;
+
+            twitter.statuses("update_with_media", {
                     media: [
-                        "path_to_file1",
-                        "path_to_file2",
-                        stream
-                    ]
+                        __dirname+'/../public/imgs/enjo.jpeg'
+                        //"http://cdn18.atwikiimg.com/pazdra/pub/icon/069.png"
+                    ],
+                    status: "Hello world!asdfadsfdsdfddddddfadsfa"+Math.random()
                 },
                 conf.twitter.accessToken,
                 conf.twitter.accessTokenSecret,
                 function(error, data, response) {
-                    if (error) {
-                        console.log(error);
-                        res.json(error);
+                    if (data.errors) {
+                        console.log("error:",data.errors);
+                        res.json(data.errors);
                         // something went wrong
                     } else {
-                        console.log(response);
+                        console.log(error);
+                        console.log(data);
                         res.json(response);
                         // data contains the data sent by twitter
                     }
