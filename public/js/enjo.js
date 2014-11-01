@@ -1,7 +1,7 @@
 /**
  * Created by shunsuke on 14/10/30.
  */
-(function(window, Vue){
+(function(window, $, Vue){
     'use strict';
 
     var img;
@@ -115,8 +115,26 @@
                 var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
                 var blob = this.Base64toBlob(base64);
                 this.saveBlob(blob,"enjo.png");
+            },
+            uploadImage: function(){
+                var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
+                var blob = this.Base64toBlob(base64);
+                var fd = new FormData();
+                console.log(blob);
+                fd.append("image", blob);
+                $.ajax({
+                    url: '/test/twitter/',
+                    method: "POST",
+                    xhr2: true,
+                    data: fd,
+                    processData: false,
+                    contentType: false,
+                    done: function(data){
+                        console.log("data: "+data);
+                    }
+                });
             }
         }
     });
 
-})(window,Vue);
+})(window,jQuery,Vue);
