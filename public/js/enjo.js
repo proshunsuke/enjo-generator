@@ -120,7 +120,6 @@
                 var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
                 var blob = this.Base64toBlob(base64);
                 var fd = new FormData();
-                console.log(blob);
                 fd.append("image", blob);
                 $.ajax({
                     url: '/test/twitter/',
@@ -129,8 +128,9 @@
                     data: fd,
                     processData: false,
                     contentType: false,
-                    done: function(data){
-                        console.log("data: "+data);
+                    success: function(data){
+                        var tweetURL = "https://twitter.com/intent/tweet?original_referer="+window.location.href+"&tw_p=tweetbutton&url="+ data.imgURL;
+                        window.open(tweetURL,"", "width=550,height=420");
                     }
                 });
             }

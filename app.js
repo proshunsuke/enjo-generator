@@ -63,7 +63,7 @@ app.post("/test/twitter",function(req,res){
                 media: [
                     new_path
                 ],
-                status: req.files.image.name
+                status: ""
             },
             conf.twitter.accessToken,
             conf.twitter.accessTokenSecret,
@@ -74,9 +74,12 @@ app.post("/test/twitter",function(req,res){
                     // something went wrong
                 } else {
                     console.log(data);
-                    res.json({ message: 'twitter updated!' });
+                    res.json({ imgURL: data.text});
                     // data contains the data sent by twitter
                 }
+                fs.unlink(new_path,function(err){
+                    if(err){return err}
+                });
             }
         );
     });
