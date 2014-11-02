@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 var twitterAPI = require('node-twitter-api');
 var conf = require('config');
 var methodOverride  = require("method-override");
@@ -108,12 +107,6 @@ app.use(function(err, req, res, next) {
 
 require('dns').lookup(require('os').hostname(), function (err, add, fam) {
     addr = add;
-    //connect to our database
-//Ideally you will obtain DB details from a config file
-    var dbName = 'twitterDB';
-    var connectionString = 'mongodb://'+addr+':27017/' + dbName;
-    mongoose.connect(connectionString);
-    // twitter api
     module.exports.twitterAPI= new twitterAPI({
         consumerKey: conf.twitter.consumerKey,
         consumerSecret: conf.twitter.consumerSecret,
