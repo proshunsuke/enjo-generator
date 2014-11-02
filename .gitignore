@@ -4,3 +4,4 @@ npm-debug.log
 .idea
 db
 config
+bower_components
