@@ -26,7 +26,7 @@
     "private": true,
     "scripts": {
         "start": "node ./bin/www",
-        "postinstall": "bower install & wget  https://github.com/olton/Metro-UI-CSS/blob/master/docs/css/iconFont.css -P ./bower_components/metro-ui-css/docs/css/"
+        "postinstall": "bower install"
     },
     "dependencies": {
         "express": "~4.9.0",
