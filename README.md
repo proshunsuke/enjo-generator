@@ -9,7 +9,7 @@ $ npm install
 $ bower install
 ```
 
-やさしさアンチックをここ（http://www.fontna.com/blog/1122/）からダウンロードしてくる。
+やさしさアンチックをここ（ http://www.fontna.com/blog/1122/ ）からダウンロードしてくる。
 
 `/public/font`に解凍したものを置く
 
