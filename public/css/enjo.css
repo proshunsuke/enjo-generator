@@ -37,3 +37,8 @@
     background-color: black;
     color: black;
 }
+
+@font-face {
+    font-family: "07YasashisaAntique";
+    src: url('../font/YasashisaAntiqueFont/07YasashisaAntique.otf') format("opentype");
+}

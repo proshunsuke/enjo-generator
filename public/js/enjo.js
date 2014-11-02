@@ -43,11 +43,11 @@
                 });
             },
             inputMsg1: function(){
-                ctx.font = "20px 'YasashisaAntique'";
+                ctx.font = "20px '07YasashisaAntique'";
                 this.tategaki(ctx,this.$data.enjoMsg1,360,43,10);
             },
             inputMsg2: function(){
-                ctx.font = "20px 'YasashisaAntique'";
+                ctx.font = "20px '07YasashisaAntique'";
                 this.tategaki(ctx,this.$data.enjoMsg2,75,43,10);
             },
             inputMsg: function(){
