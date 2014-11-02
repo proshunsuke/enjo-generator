@@ -1,7 +1,7 @@
 {
     "name": "enjo-generator",
     "description": "関宮君の炎上ジェネレーター",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "homepage": "https://sekimiya-enjo-generator.herokuapp.com",
     "author": {
         "name": "pro_shunsuke",
