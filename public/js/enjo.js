@@ -120,6 +120,9 @@
                 var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
                 var blob = this.Base64toBlob(base64);
                 var fd = new FormData();
+
+                this.loadingModal();
+
                 fd.append("image", blob);
                 $.ajax({
                     url: '/test/twitter/',
@@ -130,7 +133,43 @@
                     contentType: false,
                     success: function(data){
                         var tweetURL = "https://twitter.com/intent/tweet?original_referer="+window.location.href+"&tw_p=tweetbutton&url="+ data.imgURL;
+                        $.Dialog.close();
+                        $.Notify({
+                            //caption: "お知らせ",
+                            content: "画像の取得に成功",
+                            style: {
+                                background: '#008A00',
+                                color: "white"
+                            },
+                            timeout: 2000
+                        });
                         window.open(tweetURL,"", "width=550,height=420");
+                    },
+                    error: function(data){
+                        $.Dialog.close();
+                        $.Notify({
+                            content: data,
+                            style: {
+                                color: "white",
+                                background:"#FF2D19"
+                            },
+                            timeout: 2000
+                        });
+                    }
+                });
+            },
+            loadingModal: function(){
+                $.Dialog({
+                    overlay: true,
+                    shadow: true,
+                    flat: true,
+                    title: 'loading...',
+                    content: "<h2 style='margin-left: 35px; margin-top: 20px'><span class='icon-loading text-center load'></span></h2>",
+                    width: 100,
+                    height: 100,
+                    overlayClickClose: false,
+                    sysButtons: {
+                        btnClose: false
                     }
                 });
             }
