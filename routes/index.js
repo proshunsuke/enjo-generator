@@ -1,8 +1,14 @@
+var express = require('express');
+var conf = require('config');
+var router = express.Router();
 
-/*
- * GET home page.
- */
 
-exports.index = function(req, res){
-    res.render('index', { title: '炎上ジェネレーター' });
-};
+/* GET home page. */
+router.get('/', function(req, res) {
+    require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+        res.render('index', { url: add });
+    });
+
+});
+
+module.exports = router;
