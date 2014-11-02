@@ -4,4 +4,5 @@ npm-debug.log
 .idea
 db
 config
-public/imgs/*
+bower_components
+public/font/YasashisaAntiqueFont
