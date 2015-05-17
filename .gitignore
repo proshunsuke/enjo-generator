@@ -7,3 +7,4 @@ config
 bower_components
 config/default.json
 memo.md
+public/font/YasashisaAntiqueFont
