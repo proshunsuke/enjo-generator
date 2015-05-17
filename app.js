@@ -15,6 +15,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var apiTwitter = require('./routes/twitter'); //routes are defined here
 
+var createEnjo = require('./controller/createEnjo');
+
 var app = express();
 
 var addr;
@@ -72,6 +74,11 @@ app.post("/test/twitter",function(req,res){
             }
         );
     });
+});
+
+app.get("/api/create-enjo",function(req,res){
+    console.log("炎上画像作成を開始します");
+    createEnjo.init();
 });
 
 // catch 404 and forward to error handler
