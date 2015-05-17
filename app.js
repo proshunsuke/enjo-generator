@@ -78,7 +78,7 @@ app.post("/test/twitter",function(req,res){
 
 app.get("/api/create-enjo",function(req,res){
     console.log("炎上画像作成を開始します");
-    createEnjo.init();
+    createEnjo.init(req, res, fs);
 });
 
 // catch 404 and forward to error handler
