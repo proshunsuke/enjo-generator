@@ -5,8 +5,7 @@ URLです。：https://enjo-generator.herokuapp.com/
 
 ## 使う人
 ```shell
-$ npm install
-$ bower install
+$ make install
 ```
 
 やさしさアンチックをここ（ http://www.fontna.com/blog/1122/ ）からダウンロードしてくる。
