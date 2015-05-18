@@ -59,7 +59,7 @@ var drawImg = function (req, res, fs) {
                         // something went wrong
                     } else {
                         console.log(data);
-                        // res.json({imgURL: data.text});
+                        res.json({imgURL: data.text});
                         // data contains the data sent by twitter
                     }
                     fs.unlink(new_path, function (err) {
