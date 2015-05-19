@@ -9,7 +9,7 @@ var Canvas = require('canvas');
 var Image = Canvas.Image;
 var canvas = new Canvas(400, 595);
 var ctx = canvas.getContext('2d');
-ctx.font = "20px '07YasashisaAntique'";
+
 
 exports.init = function(req, res, fs){
     console.log("createEnjoのinit処理を開始します");
@@ -26,13 +26,18 @@ var drawImg = function (req, res, fs) {
         console.log(req.query.text1);
 
         req.header("Content-Type", "application/json; charset=utf-8");
-        
+
         // ここからベタ書き
         console.log("てきすと：　"+req.query.text1);
         var enjoMsg1 = req.query.text1;
         var enjoMsg2 = req.query.text2;
 
+        // font
+        var Font = Canvas.Font;
+        var yasashisaFont = new Font('07YasashisaAntique', fontFile('07YasashisaAntique.otf'));
+        ctx.addFont(yasashisaFont);
 
+        ctx.font = "20px yasashisaFont";
         tategaki(ctx,enjoMsg1,360,43,10);
         tategaki(ctx,enjoMsg2,75,43,10);
 
@@ -89,4 +94,8 @@ function tategaki(context,text,x,y,num){
         else
             context.fillText(ch, x-lineHeight*Math.floor(j/num)*1.1, y+lineHeight*(j%num));
     });
+}
+
+function fontFile(name) {
+    return path.join(__dirname, '/../.fonts/', name);
 }
