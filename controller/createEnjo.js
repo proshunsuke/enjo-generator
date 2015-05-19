@@ -27,7 +27,6 @@ var drawImg = function (req, res, fs) {
         console.log(req.query.text1);
 
         // ここからベタ書き
-        response.writeHead(200, {"Content-Type": "text/plain; charset=UTF-8"});
         console.log("てきすと：　"+req.query.text1);
         var enjoMsg1 = req.query.text1;
         var enjoMsg2 = req.query.text2;
