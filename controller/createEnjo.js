@@ -36,7 +36,7 @@ var drawImg = function (req, res, fs) {
         var yasashisaFont = new Font('07YasashisaAntique', fontFile('07YasashisaAntique.otf'));
         ctx.addFont(yasashisaFont);
 
-        ctx.font = "20px yasashisaFont";
+        ctx.font = "20px 07YasashisaAntique";
         tategaki(ctx,enjoMsg1,360,43,10);
         tategaki(ctx,enjoMsg2,75,43,10);
 
