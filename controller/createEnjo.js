@@ -25,8 +25,6 @@ var drawImg = function (req, res, fs) {
 
         console.log(req.query.text1);
 
-        req.header("Content-Type", "application/json; charset=utf-8");
-
         // ここからベタ書き
         console.log("てきすと：　"+req.query.text1);
         var enjoMsg1 = req.query.text1;
