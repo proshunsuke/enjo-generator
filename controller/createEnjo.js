@@ -10,6 +10,7 @@ var Image = Canvas.Image;
 var canvas = new Canvas(400, 595);
 var ctx = canvas.getContext('2d');
 
+var path = require("path");
 
 exports.init = function(req, res, fs){
     console.log("createEnjoのinit処理を開始します");
