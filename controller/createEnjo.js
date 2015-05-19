@@ -9,8 +9,7 @@ var Canvas = require('canvas');
 var Image = Canvas.Image;
 var canvas = new Canvas(400, 595);
 var ctx = canvas.getContext('2d');
-
-
+ctx.font = "20px '07YasashisaAntique'";
 
 exports.init = function(req, res, fs){
     console.log("createEnjoのinit処理を開始します");
@@ -31,7 +30,7 @@ var drawImg = function (req, res, fs) {
         var enjoMsg1 = req.query.text1;
         var enjoMsg2 = req.query.text2;
 
-        ctx.font = "20px '07YasashisaAntique'";
+
         tategaki(ctx,enjoMsg1,360,43,10);
         tategaki(ctx,enjoMsg2,75,43,10);
 
