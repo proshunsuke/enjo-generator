@@ -21,7 +21,14 @@ var sendImage = function (req, res, fs) {
         var canvas = drawedCanvas(img, req.query.text1||"", req.query.text2||"");
 
         res.setHeader("Content-Type", "image/png");
-        res.send(canvas.toBuffer());
+        canvas.toBuffer(function(err, buf){
+            if(err){
+                console.log(err);
+                res.end();
+                return;
+            }
+            res.write(buf);
+        });
     });
 };
 
