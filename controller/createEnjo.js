@@ -27,7 +27,7 @@ var sendImage = function (req, res, fs) {
                 res.end();
                 return;
             }
-            res.write(buf);
+            res.send(buf);
         });
     });
 };
