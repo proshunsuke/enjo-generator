@@ -4,9 +4,11 @@
 
 var util = require('util');
 var conf = require('config');
+var path = require("path");
 
 var Canvas = require('canvas');
 var Image = Canvas.Image;
+var Font = Canvas.Font;
 exports.init = function(req, res, fs){
     console.log("createEnjoのinit処理を開始します");
     //console.log(util.inspect("aaa"));
@@ -37,7 +39,10 @@ var drawedCanvas = function(baseImage, enjoMsg1, enjoMsg2) {
     var ctx = canvas.getContext('2d');
     ctx.drawImage(baseImage, 0, 0);
 
-    ctx.font = "20px '07YasashisaAntique'";
+    var yasashisaFont = new Font('07YasashisaAntique', fontFile('07YasashisaAntique.otf'));
+    ctx.addFont(yasashisaFont);
+    ctx.font = "20px 07YasashisaAntique";
+
     tategaki(ctx,enjoMsg1,360,43,10);
     tategaki(ctx,enjoMsg2,75,43,10);
 
@@ -54,4 +59,8 @@ function tategaki(context,text,x,y,num){
         else
             context.fillText(ch, x-lineHeight*Math.floor(j/num)*1.1, y+lineHeight*(j%num));
     });
+}
+
+function fontFile(name) {
+    return path.join(__dirname, '/../.fonts/', name);
 }
