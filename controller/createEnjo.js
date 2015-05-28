@@ -3,7 +3,6 @@
  */
 
 var util = require('util');
-var conf = require('config');
 var path = require("path");
 
 var Canvas = require('canvas');
@@ -11,7 +10,6 @@ var Image = Canvas.Image;
 var Font = Canvas.Font;
 exports.init = function(req, res, fs){
     console.log("createEnjoのinit処理を開始します");
-    //console.log(util.inspect("aaa"));
     sendImage(req, res, fs);
 };
 
