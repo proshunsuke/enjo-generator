@@ -24,7 +24,7 @@ router.post("/doTweet/", function (req, res) {
         },
             req.app.get('options').token,
             req.app.get('options').token_secret,
-            function (data) {
+            function (error, data, response) {
                 if (data.errors) {
                     console.log("error:", data.errors);
                     res.json(data.errors);
