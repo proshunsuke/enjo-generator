@@ -1,5 +1,4 @@
 var express = require('express');
-var conf = require('config');
 var router = express.Router();
 
 

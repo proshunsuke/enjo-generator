@@ -11,8 +11,6 @@ var multer = require('multer');
 var fs = require("fs");
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var apiTwitter = require('./routes/twitter'); //routes are defined here
 
 var createEnjo = require('./controller/createEnjo');
 
@@ -30,26 +28,22 @@ app.set('options', options);
 var addr;
 var twitter;
 
-// view engine setup
 var ectRenderer = ECT({ watch: true, root: __dirname + '/views', ext : '.ect' });
 app.engine('ect', ectRenderer.render);
 app.set('view engine', 'ect');
 app.set('views', path.join(__dirname, 'views'));
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(methodOverride());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(multer({ dest: __dirname+'/public/imgs'}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '.fonts')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/api', apiTwitter); //This is our route middleware
 
 app.post("/test/twitter",function(req,res){
     console.dir(req.files);
