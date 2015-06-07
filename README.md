@@ -13,10 +13,6 @@ $ make install
 
 ### run
 
-やさしさアンチックをここ（ http://www.fontna.com/blog/1122/ ）からダウンロードしてくる。
-
-`/public/font`に解凍したものを置く
-
 twitter連携機能は、特定のアカウントにツイートさせて、twitter上にアップロードされた画像のurlを持ち込んでいる。
 ツイートさせるアカウントでdeveloper登録を行い、consumerkeyなどを取得する必要がある。
 
@@ -62,3 +58,8 @@ $ make run
 <td>canvas</td><td>1.1.6</td>
 </tr>
 </table>
+
+## その他
+### フォント
+
+2コマ漫画のフォントにはやさしさアンチック（ http://www.fontna.com/blog/1122/ ）を使っています。
