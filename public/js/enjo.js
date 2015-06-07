@@ -18,17 +18,18 @@
             img = new Image();
             img.src = "/imgs/enjo.jpeg";
             cvs = document.getElementById('enjo-area');
-            this.init();
+            if (cvs.getContext) {
+                ctx = cvs.getContext("2d");
+                ctx.font = "20px '07YasashisaAntique'";
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.fillRect(0, 0, cvs.width, cvs.height);
+                ctx.fillStyle = "rgb(0,0,0)";
+                this.init();
+            }
         },
         methods: {
             init: function(){
-                if(cvs.getContext){
-                    ctx = cvs.getContext("2d");
-                    ctx.fillStyle = "rgb(255,255,255)";
-                    ctx.fillRect(0,0,cvs.width,cvs.height);
-                    ctx.fillStyle = "rgb(0,0,0)";
-                    ctx.drawImage(img,0,0);
-                }
+                ctx.drawImage(img,0,0);
             },
             // thanks to http://www55.atpages.jp/triplog/pg/monthly/1405/ra-men.js?0526
             tategaki: function(context,text,x,y,num){
@@ -43,11 +44,9 @@
                 });
             },
             inputMsg1: function(){
-                ctx.font = "20px '07YasashisaAntique'";
                 this.tategaki(ctx,this.$data.enjoMsg1,360,43,10);
             },
             inputMsg2: function(){
-                ctx.font = "20px '07YasashisaAntique'";
                 this.tategaki(ctx,this.$data.enjoMsg2,75,43,10);
             },
             inputMsg: function(){
@@ -103,8 +102,6 @@
                 var data = atob(tmp[1]);
                 var mime = tmp[0].split(':')[1].split(';')[0];
 
-                //var buff = new ArrayBuffer(data.length);
-                //var arr = new Uint8Array(buff);
                 var arr = new Uint8Array(data.length);
                 for (i = 0; i < data.length; i++) {arr[i] = data.charCodeAt(i);}
                 var blob = new Blob([arr], { type: mime });

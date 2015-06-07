@@ -2,9 +2,5 @@ node_modules
 .DS_Store
 npm-debug.log
 .idea
-db
 bower_components
-
-memo.md
-public/font/YasashisaAntiqueFont
 local_run.sh
