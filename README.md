@@ -20,18 +20,20 @@ $ make install
 twitter連携機能は、特定のアカウントにツイートさせて、twitter上にアップロードされた画像のurlを持ち込んでいる。
 ツイートさせるアカウントでdeveloper登録を行い、consumerkeyなどを取得する必要がある。
 
-取得してきたものを、`/config/default.json`に置く
+`local_run.sh`というファイルを作り、以下の内容を記載する。
 
-```json
-{
-    "twitter": {
-        "consumerKey": "yourConsumerKey",
-        "consumerSecret": "yourConsumerSecret",
-        "accessToken": "yourAccessToken",
-        "accessTokenSecret": "yourAccessTokenSecret"
-    }
-}
+```shell
+#!/bin/sh
+
+export TWIBOT_TWITTER_KEY=yourConsumerKey
+export TWIBOT_TWITTER_SECRET=yourConsumerSecret
+export TWIBOT_TWITTER_TOKEN=yourAccessToken
+export TWIBOT_TWITTER_TOKEN_SECRET=yourAccessTokenSecret
+
+npm start
 ```
+
+実行
 
 ```shell
 $ make run
