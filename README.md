@@ -56,4 +56,7 @@ $ make run
 <tr>
 <td>metro-ui-css</td><td>2.*</td>
 </tr>
+<tr>
+<td>canvas</td><td>1.1.6</td>
+</tr>
 </table>
