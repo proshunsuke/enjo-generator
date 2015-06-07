@@ -23,7 +23,7 @@ twitter連携機能は、特定のアカウントにツイートさせて、twit
 `local_run.sh`というファイルを作り、以下の内容を記載する。
 
 ```shell
-\#!/bin/sh
+#!/bin/sh
 
 export TWIBOT_TWITTER_KEY=yourConsumerKey
 export TWIBOT_TWITTER_SECRET=yourConsumerSecret
@@ -32,6 +32,8 @@ export TWIBOT_TWITTER_TOKEN_SECRET=yourAccessTokenSecret
 
 npm start
 ```
+
+実行
 
 ```shell
 $ make run
