@@ -4,9 +4,14 @@
 URLです。：https://enjo-generator.herokuapp.com/
 
 ## 使う人
+
+### インストール
+
 ```shell
 $ make install
 ```
+
+### run
 
 やさしさアンチックをここ（ http://www.fontna.com/blog/1122/ ）からダウンロードしてくる。
 
@@ -28,4 +33,8 @@ twitter連携機能は、特定のアカウントにツイートさせて、twit
 }
 ```
 
+```shell
+$ make run
+```
 
+http://localhost:3000/ にアクセス
