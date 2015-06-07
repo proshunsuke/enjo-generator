@@ -1,7 +1,7 @@
 /**
  * Created by shunsuke on 14/10/30.
  */
-(function(window, $, Vue){
+(function (window, $, Vue) {
     'use strict';
 
     var img;
@@ -14,7 +14,7 @@
             enjoMsg1: "",
             enjoMsg2: ""
         },
-        ready: function(){
+        ready: function () {
             img = new Image();
             img.src = "/imgs/enjo.jpeg";
             cvs = document.getElementById('enjo-area');
@@ -28,61 +28,67 @@
             }
         },
         methods: {
-            init: function(){
-                ctx.drawImage(img,0,0);
+            init: function () {
+                ctx.drawImage(img, 0, 0);
             },
             // thanks to http://www55.atpages.jp/triplog/pg/monthly/1405/ra-men.js?0526
-            tategaki: function(context,text,x,y,num){
+            tategaki: function (context, text, x, y, num) {
                 var lineHeight = context.measureText("ん").width;
-                Array.prototype.forEach.call(text,function(ch,j){
-                    if(ch==='ー'||ch==='－'||ch==='―')
-                        context.fillText('｜', x-lineHeight*Math.floor(j/num)*1.1, y+lineHeight*(j%num));
-                    else if(ch==='、'||ch==='，'||ch==='。'||ch==='．'||ch==='.'||ch===',')
-                        context.fillText(ch, x-lineHeight*(Math.floor(j/num)-0.6)*1.1, y+lineHeight*(j%num-0.6));
-                    else
-                        context.fillText(ch, x-lineHeight*Math.floor(j/num)*1.1, y+lineHeight*(j%num));
+                Array.prototype.forEach.call(text, function (ch, j) {
+                    if (ch === 'ー' || ch === '－' || ch === '―') {
+                        context.fillText(
+                            '｜',
+                            x - lineHeight * Math.floor(j / num) * 1.1,
+                            y + lineHeight * (j % num)
+                        );
+                    } else if (ch === '、' || ch === '，' || ch === '。' || ch === '．' || ch === '.' || ch === ',') {
+                        context.fillText(
+                            ch,
+                            x - lineHeight * (Math.floor(j / num) - 0.6) * 1.1,
+                            y + lineHeight * (j % num - 0.6)
+                        );
+                    } else {
+                        context.fillText(ch, x - lineHeight * Math.floor(j / num) * 1.1, y + lineHeight * (j % num));
+                    }
                 });
             },
-            inputMsg1: function(){
-                this.tategaki(ctx,this.$data.enjoMsg1,360,43,10);
+            inputMsg1: function () {
+                this.tategaki(ctx, this.$data.enjoMsg1, 360, 43, 10);
             },
-            inputMsg2: function(){
-                this.tategaki(ctx,this.$data.enjoMsg2,75,43,10);
+            inputMsg2: function () {
+                this.tategaki(ctx, this.$data.enjoMsg2, 75, 43, 10);
             },
-            inputMsg: function(){
+            inputMsg: function () {
                 this.init();
                 this.inputMsg1();
                 this.inputMsg2();
             },
-            allDelete: function(){
+            allDelete: function () {
                 this.init();
                 this.$data.enjoMsg1 = "";
                 this.$data.enjoMsg2 = "";
             },
-            inputOrigin: function(){
+            inputOrigin: function () {
                 this.$data.enjoMsg1 = "今日のゼミは　　　　絶対炎上しないよ！";
                 this.$data.enjoMsg2 = "もし炎上したら　　　木の下に埋めて貰っても構わないよ";
                 this.inputMsg();
             },
             // thanks to http://jsdo.it/Yukisuke/p311
-            ArraytoBlob: function(_mime,_array)
-            {
+            ArraytoBlob: function (_mime, _array) {
                 // ArrayBufferやUint8Arrayなら入れなおす工数がなくなります
                 var arr = new Uint8Array(_array.length);
-                for (var i = 0; i < _array.length; i++) {arr[i] = _array[i];}
+                var i;
+                for (i = 0; i < _array.length; i++) { arr[i] = _array[i]; }
 
                 var blob = new Blob([arr], { type: _mime });
                 return blob;
             },
             // thanks to http://jsdo.it/Yukisuke/p311
-            saveBlob: function(_blob,_file)
-            {
-                if( /*@cc_on ! @*/ false )
-                {	// IEの場合
+            saveBlob: function (_blob, _file) {
+                if ( /*@cc_on ! @*/ false) {
+                    // IEの場合
                     window.navigator.msSaveBlob(_blob, _file);
-                }
-                else
-                {
+                } else {
                     var url = (window.URL || window.webkitURL);
                     var data = url.createObjectURL(_blob);
                     var e = document.createEvent("MouseEvents");
@@ -95,25 +101,24 @@
                 }
             },
             // thanks to http://jsdo.it/Yukisuke/p311
-            Base64toBlob: function(_base64)
-            {
+            Base64toBlob: function (_base64) {
                 var i;
                 var tmp = _base64.split(',');
                 var data = atob(tmp[1]);
                 var mime = tmp[0].split(':')[1].split(';')[0];
 
                 var arr = new Uint8Array(data.length);
-                for (i = 0; i < data.length; i++) {arr[i] = data.charCodeAt(i);}
+                for (i = 0; i < data.length; i++) { arr[i] = data.charCodeAt(i); }
                 var blob = new Blob([arr], { type: mime });
                 return blob;
             },
             // thanks to http://jsdo.it/Yukisuke/p311
-            save: function(){
+            save: function () {
                 var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
                 var blob = this.Base64toBlob(base64);
-                this.saveBlob(blob,"enjo.png");
+                this.saveBlob(blob, "enjo.png");
             },
-            uploadImage: function(){
+            uploadImage: function () {
                 var base64 = cvs.toDataURL();    // firfoxならtoblobで直接blobにして保存できます。
                 var blob = this.Base64toBlob(base64);
                 var fd = new FormData();
@@ -122,14 +127,17 @@
 
                 fd.append("image", blob);
                 $.ajax({
-                    url: '/test/twitter/',
+                    url: '/twitter/doTweet/',
                     method: "POST",
                     xhr2: true,
                     data: fd,
                     processData: false,
                     contentType: false,
-                    success: function(data){
-                        var tweetURL = "https://twitter.com/intent/tweet?original_referer="+window.location.href+"&tw_p=tweetbutton&url="+ data.imgURL;
+                    success: function (data) {
+                        var tweetURL = "https://twitter.com/intent/tweet?original_referer=" +
+                            window.location.href +
+                            "&tw_p=tweetbutton&url=" +
+                            data.imgURL;
                         $.Dialog.close();
                         $.Notify({
                             //caption: "お知らせ",
@@ -140,22 +148,22 @@
                             },
                             timeout: 2000
                         });
-                        window.open(tweetURL,"", "width=550,height=420");
+                        window.open(tweetURL, "", "width=550,height=420");
                     },
-                    error: function(data){
+                    error: function (data) {
                         $.Dialog.close();
                         $.Notify({
                             content: data,
                             style: {
                                 color: "white",
-                                background:"#FF2D19"
+                                background: "#FF2D19"
                             },
                             timeout: 2000
                         });
                     }
                 });
             },
-            loadingModal: function(){
+            loadingModal: function () {
                 $.Dialog({
                     overlay: true,
                     shadow: true,
@@ -172,5 +180,4 @@
             }
         }
     });
-
-})(window,jQuery,Vue);
+})(window, jQuery, Vue);
